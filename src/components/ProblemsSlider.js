@@ -6,17 +6,33 @@ const SliderContainer = styled.section`
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const Header = styled.div`
   text-align: center;
   margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 const Title = styled.h2`
@@ -25,6 +41,14 @@ const Title = styled.h2`
   color: #1a1a1a;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -33,6 +57,15 @@ const Subtitle = styled.p`
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+  }
 `;
 
 // COMPONENTES DO SLIDE
@@ -43,6 +76,16 @@ const SliderWrapper = styled.div`
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  
+  @media (max-width: 768px) {
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
 `;
 
 const SlideContainer = styled.div`
@@ -60,6 +103,7 @@ const Slide = styled.div`
   
   @media (max-width: 768px) {
     flex-direction: column;
+    text-align: center;
   }
 `;
 
@@ -71,7 +115,12 @@ const ImageSection = styled.div`
   justify-content: center;
   
   @media (max-width: 768px) {
-    padding: 2rem;
+    padding: 2rem 1rem 1rem;
+    flex: none;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem 0.5rem;
   }
 `;
 
@@ -80,6 +129,14 @@ const SlideImage = styled.img`
   max-height: 400px;
   object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+  
+  @media (max-width: 768px) {
+    max-height: 250px;
+  }
+  
+  @media (max-width: 480px) {
+    max-height: 200px;
+  }
 `;
 
 const ContentSection = styled.div`
@@ -90,7 +147,12 @@ const ContentSection = styled.div`
   justify-content: center;
   
   @media (max-width: 768px) {
-    padding: 2rem;
+    padding: 1rem 2rem 2rem;
+    flex: none;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 1.5rem 1.5rem;
   }
 `;
 
@@ -99,6 +161,14 @@ const SlideTitle = styled.h3`
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const ProblemText = styled.h4`
@@ -107,6 +177,14 @@ const ProblemText = styled.h4`
   font-weight: 600;
   margin-bottom: 1rem;
   line-height: 1.4;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
 const Description = styled.p`
@@ -114,6 +192,16 @@ const Description = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const SolveButton = styled.button`
@@ -135,9 +223,22 @@ const SolveButton = styled.button`
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
   }
+  
+  @media (max-width: 768px) {
+    align-self: center;
+    font-size: 1rem;
+    padding: 0.9rem 1.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
-// ✅ NOVOS COMPONENTES DE NAVEGAÇÃO
+// COMPONENTES DE NAVEGAÇÃO
 const NavigationButton = styled.button`
   position: absolute;
   top: 50%;
@@ -172,8 +273,29 @@ const NavigationButton = styled.button`
   }
   
   @media (max-width: 768px) {
-    &.prev { left: 10px; }
-    &.next { right: 10px; }
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    
+    &.prev { 
+      left: 10px; 
+    }
+    &.next { 
+      right: 10px; 
+    }
+  }
+  
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    
+    &.prev { 
+      left: 5px; 
+    }
+    &.next { 
+      right: 5px; 
+    }
   }
 `;
 
@@ -182,6 +304,10 @@ const DotsContainer = styled.div`
   justify-content: center;
   gap: 0.5rem;
   margin-top: 2rem;
+  
+  @media (max-width: 768px) {
+    margin-top: 1.5rem;
+  }
 `;
 
 const Dot = styled.button`
@@ -197,12 +323,16 @@ const Dot = styled.button`
     background: #1a1a1a;
     transform: scale(1.2);
   }
+  
+  @media (max-width: 480px) {
+    width: 10px;
+    height: 10px;
+  }
 `;
 
 function ProblemsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   
-  // ✅ NOVA LÓGICA DE NAVEGAÇÃO
   const totalSlides = 4; // Temos 4 slides
 
   // Auto-play
@@ -227,45 +357,45 @@ function ProblemsSlider() {
     setCurrentSlide(index);
   };
 
-const slides = [
-  {
-    id: 1,
-    image: '/images/ar-condicionado.png',    // ✅ MUDOU .jpg para .png
-    title: 'Ar-Condicionado',
-    problem: 'Não está gelando ou fazendo ruído estranho?',
-    description: 'Problemas com gás, compressor ou filtros podem estar afetando seu ar-condicionado. Nossa equipe especializada resolve rapidamente.'
-  },
-  {
-    id: 2,
-    image: '/images/expositor.png',          // ✅ MUDOU .jpg para .png
-    title: 'Expositor Comercial',
-    problem: 'Temperatura inadequada ou porta não veda?',
-    description: 'Seus produtos precisam da temperatura ideal para conservação e vendas. Garantimos o funcionamento perfeito do seu expositor.'
-  },
-  {
-    id: 3,
-    image: '/images/geladeira.png',          // ✅ MUDOU .jpg para .png
-    title: 'Geladeira Residencial',
-    problem: 'Não gela, faz barulho ou gasta muita energia?',
-    description: 'Compressor, termostato ou vazamentos podem estar causando o problema. Diagnóstico preciso e reparo eficiente.'
-  },
-  {
-    id: 4,
-    image: '/images/camara-fria.png',        // ✅ MUDOU .jpg para .png
-    title: 'Câmara Fria',
-    problem: 'Temperatura instável ou ventilação inadequada?',
-    description: 'Sistemas comerciais precisam de manutenção especializada e constante. Evite perdas de produtos com nosso serviço.'
-  }
-];
+  const slides = [
+    {
+      id: 1,
+      image: '/images/ar-condicionado.png',
+      title: 'Ar-Condicionado',
+      problem: 'Não está gelando ou fazendo ruído estranho?',
+      description: 'Problemas com gás, compressor ou filtros podem estar afetando seu ar-condicionado. Nossa equipe especializada resolve rapidamente.'
+    },
+    {
+      id: 2,
+      image: '/images/expositor.png',
+      title: 'Expositor Comercial',
+      problem: 'Temperatura inadequada ou porta não veda?',
+      description: 'Seus produtos precisam da temperatura ideal para conservação e vendas. Garantimos o funcionamento perfeito do seu expositor.'
+    },
+    {
+      id: 3,
+      image: '/images/geladeira.png',
+      title: 'Geladeira Residencial',
+      problem: 'Não gela, faz barulho ou gasta muita energia?',
+      description: 'Compressor, termostato ou vazamentos podem estar causando o problema. Diagnóstico preciso e reparo eficiente.'
+    },
+    {
+      id: 4,
+      image: '/images/camara-fria.png',
+      title: 'Câmara Fria',
+      problem: 'Temperatura instável ou ventilação inadequada?',
+      description: 'Sistemas comerciais precisam de manutenção especializada e constante. Evite perdas de produtos com nosso serviço.'
+    }
+  ];
 
   const handleSolveNow = (equipment) => {
     const message = `Olá! Estou com problemas no meu ${equipment}. Poderia me ajudar com um orçamento?`;
-    const whatsappUrl = `https://wa.me/5581999999999?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5511920044158?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   return (
-<SliderContainer id="services">
+    <SliderContainer id="services">
       <Container>
         <Header>
           <Title>Problemas com Seus Equipamentos?</Title>
@@ -295,7 +425,7 @@ const slides = [
             ))}
           </SlideContainer>
           
-          {/* ✅ BOTÕES DE NAVEGAÇÃO */}
+          {/* BOTÕES DE NAVEGAÇÃO */}
           <NavigationButton className="prev" onClick={prevSlide}>
             ←
           </NavigationButton>
@@ -305,7 +435,7 @@ const slides = [
           </NavigationButton>
         </SliderWrapper>
 
-        {/* ✅ DOTS DE NAVEGAÇÃO */}
+        {/* DOTS DE NAVEGAÇÃO */}
         <DotsContainer>
           {slides.map((_, index) => (
             <Dot
