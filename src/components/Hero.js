@@ -2,111 +2,110 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeroContainer = styled.section`
-  background: #fafafa;
-  padding: 8rem 3rem 4rem;
-  text-align: left;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
+  background: white;
+  padding: 3rem 3rem 2rem;
+  text-align: center;
 `;
 
 const Container = styled.div`
-  max-width: 1400px;
+  max-width: 600px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
 `;
 
-const Content = styled.div``;
-
-const Title = styled.h1`
-  font-size: 3.5rem;
-  font-weight: 700;
+const TagLine = styled.h1`
+  font-size: 2.2rem;
+  font-weight: 600;
   color: #1a1a1a;
-  line-height: 1.2;
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
+  
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
 `;
 
-const Subtitle = styled.p`
-  font-size: 1.2rem;
+const Description = styled.p`
+  font-size: 1.1rem;
   color: #666;
   line-height: 1.6;
   margin-bottom: 2.5rem;
-  max-width: 500px;
 `;
 
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const PrimaryButton = styled.button`
+const CTAButton = styled.button`
   background: #1a1a1a;
   color: white;
   border: none;
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   
   &:hover {
     background: #333;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 `;
 
-const SecondaryButton = styled.button`
-  background: transparent;
-  color: #1a1a1a;
-  border: 2px solid #e0e0e0;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    border-color: #1a1a1a;
-    background: #1a1a1a;
-    color: white;
-  }
-`;
-
-const ImagePlaceholder = styled.div`
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  height: 400px;
-  border-radius: 8px;
+const ScrollIndicator = styled.div`
+  margin-top: 3rem;
+  color: #999;
+  font-size: 0.9rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 500;
+  gap: 0.5rem;
+`;
+
+const ArrowDown = styled.div`
+  width: 16px;
+  height: 16px;
+  border-right: 2px solid #999;
+  border-bottom: 2px solid #999;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: rotate(45deg) translateY(0);
+    }
+    40% {
+      transform: rotate(45deg) translateY(-4px);
+    }
+    60% {
+      transform: rotate(45deg) translateY(-2px);
+    }
+  }
 `;
 
 function Hero() {
+  const scrollToProblems = () => {
+    const problemsSection = document.querySelector('[data-section="problems"]');
+    if (problemsSection) {
+      problemsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <HeroContainer>
       <Container>
-        <Content>
-          <Subtitle>
-            Soluções técnicas especializadas em refrigeração residencial, 
-            comercial e industrial. Qualidade, eficiência e confiabilidade.
-          </Subtitle>
-          <ButtonGroup>
-            <PrimaryButton>Solicitar Orçamento</PrimaryButton>
-            <SecondaryButton>Ver Projetos</SecondaryButton>
-          </ButtonGroup>
-        </Content>
-        <ImagePlaceholder>
-          Imagem dos equipamentos
-        </ImagePlaceholder>
+        <TagLine>
+          Especialistas em Refrigeração Técnica
+        </TagLine>
+        
+        <Description>
+          Soluções completas para geladeiras, freezers, ar-condicionados e câmaras frias. 
+          Atendimento profissional para residências e empresas.
+        </Description>
+
+        <CTAButton onClick={scrollToProblems}>
+          Identificar Meu Problema
+        </CTAButton>
+
+        <ScrollIndicator>
+          <ArrowDown />
+        </ScrollIndicator>
       </Container>
     </HeroContainer>
   );

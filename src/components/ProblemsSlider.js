@@ -35,7 +35,7 @@ const Subtitle = styled.p`
   line-height: 1.6;
 `;
 
-// NOVOS COMPONENTES DO SLIDE
+// COMPONENTES DO SLIDE
 const SliderWrapper = styled.div`
   position: relative;
   max-width: 900px;
@@ -69,7 +69,6 @@ const ImageSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   
   @media (max-width: 768px) {
     padding: 2rem;
@@ -138,39 +137,126 @@ const SolveButton = styled.button`
   }
 `;
 
+// ✅ NOVOS COMPONENTES DE NAVEGAÇÃO
+const NavigationButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  
+  &:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+  
+  &.prev {
+    left: -25px;
+  }
+  
+  &.next {
+    right: -25px;
+  }
+  
+  @media (max-width: 768px) {
+    &.prev { left: 10px; }
+    &.next { right: 10px; }
+  }
+`;
+
+const DotsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+`;
+
+const Dot = styled.button`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: ${props => props.active ? '#1a1a1a' : '#ccc'};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #1a1a1a;
+    transform: scale(1.2);
+  }
+`;
+
 function ProblemsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  
+  // ✅ NOVA LÓGICA DE NAVEGAÇÃO
+  const totalSlides = 4; // Temos 4 slides
 
-  const slides = [
-    {
-      id: 1,
-      image: '/images/ar-condicionado.jpg',
-      title: 'Ar-Condicionado',
-      problem: 'Não está gelando ou fazendo ruído estranho?',
-      description: 'Problemas com gás, compressor ou filtros podem estar afetando seu ar-condicionado. Nossa equipe especializada resolve rapidamente.'
-    },
-    {
-      id: 2,
-      image: '/images/expositor.jpg',
-      title: 'Expositor Comercial',
-      problem: 'Temperatura inadequada ou porta não veda?',
-      description: 'Seus produtos precisam da temperatura ideal para conservação e vendas. Garantimos o funcionamento perfeito do seu expositor.'
-    },
-    {
-      id: 3,
-      image: '/images/geladeira.jpg',
-      title: 'Geladeira Residencial',
-      problem: 'Não gela, faz barulho ou gasta muita energia?',
-      description: 'Compressor, termostato ou vazamentos podem estar causando o problema. Diagnóstico preciso e reparo eficiente.'
-    },
-    {
-      id: 4,
-      image: '/images/camara-fria.jpg',
-      title: 'Câmara Fria',
-      problem: 'Temperatura instável ou ventilação inadequada?',
-      description: 'Sistemas comerciais precisam de manutenção especializada e constante. Evite perdas de produtos com nosso serviço.'
-    }
-  ];
+  // Auto-play
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % totalSlides);
+    }, 5000); // Muda a cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, [totalSlides]);
+
+  // Funções de navegação
+  const nextSlide = () => {
+    setCurrentSlide(prev => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(prev => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+const slides = [
+  {
+    id: 1,
+    image: '/images/ar-condicionado.png',    // ✅ MUDOU .jpg para .png
+    title: 'Ar-Condicionado',
+    problem: 'Não está gelando ou fazendo ruído estranho?',
+    description: 'Problemas com gás, compressor ou filtros podem estar afetando seu ar-condicionado. Nossa equipe especializada resolve rapidamente.'
+  },
+  {
+    id: 2,
+    image: '/images/expositor.png',          // ✅ MUDOU .jpg para .png
+    title: 'Expositor Comercial',
+    problem: 'Temperatura inadequada ou porta não veda?',
+    description: 'Seus produtos precisam da temperatura ideal para conservação e vendas. Garantimos o funcionamento perfeito do seu expositor.'
+  },
+  {
+    id: 3,
+    image: '/images/geladeira.png',          // ✅ MUDOU .jpg para .png
+    title: 'Geladeira Residencial',
+    problem: 'Não gela, faz barulho ou gasta muita energia?',
+    description: 'Compressor, termostato ou vazamentos podem estar causando o problema. Diagnóstico preciso e reparo eficiente.'
+  },
+  {
+    id: 4,
+    image: '/images/camara-fria.png',        // ✅ MUDOU .jpg para .png
+    title: 'Câmara Fria',
+    problem: 'Temperatura instável ou ventilação inadequada?',
+    description: 'Sistemas comerciais precisam de manutenção especializada e constante. Evite perdas de produtos com nosso serviço.'
+  }
+];
 
   const handleSolveNow = (equipment) => {
     const message = `Olá! Estou com problemas no meu ${equipment}. Poderia me ajudar com um orçamento?`;
@@ -208,7 +294,27 @@ function ProblemsSlider() {
               </Slide>
             ))}
           </SlideContainer>
+          
+          {/* ✅ BOTÕES DE NAVEGAÇÃO */}
+          <NavigationButton className="prev" onClick={prevSlide}>
+            ←
+          </NavigationButton>
+          
+          <NavigationButton className="next" onClick={nextSlide}>
+            →
+          </NavigationButton>
         </SliderWrapper>
+
+        {/* ✅ DOTS DE NAVEGAÇÃO */}
+        <DotsContainer>
+          {slides.map((_, index) => (
+            <Dot
+              key={index}
+              active={currentSlide === index}
+              onClick={() => goToSlide(index)}
+            />
+          ))}
+        </DotsContainer>
       </Container>
     </SliderContainer>
   );

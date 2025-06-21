@@ -191,14 +191,14 @@ const ReviewText = styled.p`
 `;
 
 function GoogleInfo() {
-  // Dados da empresa
+  // ✅ DADOS ATUALIZADOS
   const businessData = {
     name: "Refrigeration Company",
-    address: "Rua Exemplo, 123 - Olinda, PE",
-    phone: "(81) 99999-9999",
-    whatsapp: "5581999999999", // NOVO: Número do WhatsApp
+    address: "R. Antônio Guganis, 200 - Jardim São Paulo, São Paulo - SP, 02044-110",
+    phone: "(11) 92004-4158 • (11) 99209-1885",
+    whatsapp: "5511920044158", // ✅ WHATSAPP CORRETO
     email: "contato@refrigerationcompany.com",
-    hours: "Segunda a Sexta: 8h às 18h\nSábado: 8h às 12h",
+    hours: "Segunda a Sábado: 8h às 20h\nDomingo: Fechado",
     rating: 4.8,
     reviewCount: 47
   };
@@ -260,10 +260,10 @@ function GoogleInfo() {
             </InfoItem>
           </InfoGrid>
           
-          {/* NOVO: Mapa do Google Maps */}
+          {/* ✅ MAPA ATUALIZADO */}
           <MapContainer>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.5!2d-34.8609!3d-8.0178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMDEnMDQuMSJTIDM0wrA1MSczOS4yIlc!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975145165717!2d-46.62047!3d-23.497832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef76201a4d4b7%3A0xbc7857ba935510fe!2sR.%20Ant%C3%B4nio%20Guganis%2C%20200%20-%20Jardim%20S%C3%A3o%20Paulo%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2002044-110!5e0!3m2!1spt-BR!2sbr!4v1625097200000!5m2!1spt-BR!2sbr"
               width="100%"
               height="100%"
               style={{border: 0}}
@@ -273,9 +273,12 @@ function GoogleInfo() {
             />
           </MapContainer>
           
-          {/* NOVO: Botões de ação */}
+          {/* ✅ BOTÕES ATUALIZADOS */}
           <ActionButtons>
-            <GoogleLink href="https://goo.gl/maps/SeuLinkAqui" target="_blank">
+            <GoogleLink 
+              href="https://www.google.com/maps/place/Refrigeration+Company/@-23.4978323,-46.6181401,17z/data=!4m8!3m7!1s0x94cef76201a4d4b7:0xbc7857ba935510fe!8m2!3d-23.4978323!4d-46.6181401!9m1!1b1!16s%2Fg%2F11x77fp4tv?authuser=0&hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" 
+              target="_blank"
+            >
               🗺️ Ver no Google Maps
             </GoogleLink>
             <WhatsAppButton 
@@ -309,7 +312,11 @@ function GoogleInfo() {
             ))}
           </ReviewsList>
           
-          <GoogleLink href="https://g.page/SeuNegocio/review" target="_blank">
+          {/* ✅ LINK DAS AVALIAÇÕES ATUALIZADO */}
+          <GoogleLink 
+            href="https://www.google.com/maps/place/Refrigeration+Company/@-23.4978323,-46.6181401,17z/data=!4m8!3m7!1s0x94cef76201a4d4b7:0xbc7857ba935510fe!8m2!3d-23.4978323!4d-46.6181401!9m1!1b1!16s%2Fg%2F11x77fp4tv?authuser=0&hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" 
+            target="_blank"
+          >
             📱 Ver todas as avaliações no Google
           </GoogleLink>
         </ReviewsContainer>
