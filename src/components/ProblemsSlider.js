@@ -265,7 +265,7 @@ const slides = [
   };
 
   return (
-    <SliderContainer>
+<SliderContainer id="services">
       <Container>
         <Header>
           <Title>Problemas com Seus Equipamentos?</Title>

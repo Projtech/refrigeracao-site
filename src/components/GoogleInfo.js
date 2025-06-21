@@ -222,7 +222,7 @@ function GoogleInfo() {
   ];
 
   return (
-    <InfoContainer>
+<InfoContainer id="info">
       <Container>
         <BusinessInfo>
           <Title>Informações de Contato</Title>

@@ -139,7 +139,7 @@ function Contact() {
     service: '',
     message: ''
   });
-  
+
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -153,7 +153,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simular envio
     setTimeout(() => {
       setStatus('success');
@@ -163,19 +163,19 @@ function Contact() {
   };
 
   return (
-    <ContactContainer>
+    <ContactContainer id="contact">
       <Container>
         <FormTitle>Solicitar Orçamento</FormTitle>
         <FormDescription>
           Nossa equipe técnica entrará em contato rapidamente.
         </FormDescription>
-        
+
         {status === 'success' && (
           <SuccessMessage>
             Mensagem enviada com sucesso! Entraremos em contato em breve.
           </SuccessMessage>
         )}
-        
+
         {status === 'error' && (
           <ErrorMessage>
             Erro ao enviar mensagem. Tente novamente.

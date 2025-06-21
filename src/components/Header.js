@@ -215,9 +215,28 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Fechar menu mobile ao clicar em um link
-  const handleMobileNavClick = () => {
+  // Função para scroll suave para seções
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 80; // Altura do header fixo
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
     setIsMobileMenuOpen(false);
+  };
+
+  // Scroll para o topo (logo)
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   // Funcionalidade do botão de orçamento
@@ -235,15 +254,15 @@ function Header() {
         boxShadow: isScrolled ? '0 2px 20px rgba(0,0,0,0.1)' : 'none'
       }}>
         <Nav>
-          <Logo>Refrigeration Company</Logo>
+          <Logo onClick={scrollToTop}>Refrigeration Company</Logo>
           
           {/* Desktop Navigation */}
           <DesktopNav>
             <NavLinks>
-              <NavLink>Serviços</NavLink>
-              <NavLink>Projetos</NavLink>
-              <NavLink>Sobre</NavLink>
-              <NavLink>Contato</NavLink>
+              <NavLink onClick={() => scrollToSection('about')}>Sobre</NavLink>
+              <NavLink onClick={() => scrollToSection('services')}>Serviços</NavLink>
+              <NavLink onClick={() => scrollToSection('info')}>Informações</NavLink>
+              <NavLink onClick={() => scrollToSection('contact')}>Contato</NavLink>
             </NavLinks>
             <ContactButton onClick={handleContactClick}>
               Orçamento
@@ -264,10 +283,10 @@ function Header() {
         {/* Mobile Menu */}
         <MobileMenu isOpen={isMobileMenuOpen}>
           <MobileNavLinks>
-            <MobileNavLink onClick={handleMobileNavClick}>Serviços</MobileNavLink>
-            <MobileNavLink onClick={handleMobileNavClick}>Projetos</MobileNavLink>
-            <MobileNavLink onClick={handleMobileNavClick}>Sobre</MobileNavLink>
-            <MobileNavLink onClick={handleMobileNavClick}>Contato</MobileNavLink>
+            <MobileNavLink onClick={() => scrollToSection('about')}>Sobre</MobileNavLink>
+            <MobileNavLink onClick={() => scrollToSection('services')}>Serviços</MobileNavLink>
+            <MobileNavLink onClick={() => scrollToSection('info')}>Informações</MobileNavLink>
+            <MobileNavLink onClick={() => scrollToSection('contact')}>Contato</MobileNavLink>
             <MobileContactButton onClick={handleContactClick}>
               💬 Solicitar Orçamento
             </MobileContactButton>
